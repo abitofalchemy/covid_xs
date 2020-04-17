@@ -1,0 +1,160 @@
+---
+title: "R Notebook"
+output: html_notebook
+
+# References
+# https://bookdown.org/yihui/rmarkdown/yihui-xie.html
+# https://www.jessesadler.com/post/network-analysis-with-r/
+# d3plus for graphs
+# https://cbrownley.wordpress.com/2016/06/26/parsing-pdfs-in-python-with-tika/
+# https://d3plus.org/workshops/11_29_2013/started/
+---
+
+## Introduction 
+
+The purpose of this notebook is to use covid19 data to track and predict potential costs, member cases, and member susceptibility from the risk of continued spread.
+
+## Setup
+```{r}
+library(reticulate)
+use_condaenv('py36')
+```
+
+
+Imports
+```{python}
+# source_python('start_covid.py')
+import pandas as pd
+import numpy as np
+import os
+import sys
+import random
+import math
+import time
+import os
+import folium
+from sklearn.linear_model import LinearRegression, BayesianRidge
+from sklearn.model_selection import RandomizedSearchCV, train_test_split
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+import datetime
+import operator
+# plt.style.use('fivethirtyeight')
+```
+
+
+## Data 
+
+Load Data
+```{python}
+input_dir = './covid-19-data/'
+print('❱ covid_dashboard_county')
+c_df = pd.read_csv(input_dir+'covid_dashboard_county.csv',header=0)
+c_df.columns = ['state_key', 'state', 'county', 'date', 'cases','anthem_cases']
+print('❱ us-counties')
+c2df = pd.read_csv(input_dir+'us-counties.csv',header=0)
+```
+
+Merge the two datasets
+```{python}
+mdf = pd.merge(c_df, c2df, on=['date','county','state'],how='left')
+print(mdf.shape)               
+print(mdf.sample(10).head())
+mdf.drop_duplicates(inplace=True)
+pprint(mdf.columns)               
+```
+
+Peek at the data 
+```{python}
+edges = mdf.apply(lambda x: (x.state_key,x.county), axis=1)
+edges = edges.drop_duplicates(keep='first')
+print(len(edges))
+pprint(edges.tail())
+print('The sum of cases in all of Alaska',mdf[mdf['state_key']=='AK']['cases_x'].sum())
+## Sum cases by county
+an_cases = mdf.groupby(['state_key','county'], as_index=False)['cases_x'].sum()
+# print(an_cases.groupby('state_key')['cases_x'].sum())
+# The sum of cases in all of Alaska 1123.4187686003652
+# state_key
+# AK      1123.418769
+print(an_cases.head())
+an_cases.to_csv('an_county_cases_edges.csv',header=True,index=False)
+```
+
+## Graph 
+
+View as graph:
+
+```{r}
+library("igraph")
+```
+
+
+```{r}
+el <- read.csv('an_county_cases_edges.csv', header = T)
+el
+edgelist <- as.data.frame(el)
+graphNetwork <- graph.data.frame(edgelist, directed = F)
+V(graphNetwork)$type <- V(graphNetwork)$name %in% edgelist[,2] #the second column of edges is TRUE type
+# E(g)$cases <- as.numeric(edgelist[,3])
+# names(edges)[3] <- "cases"
+# g <- graph.data.frame(edges, directed = F)
+# V(g)$type <- V(g)$name %in% edges[,2] #the second column of edges is TRUE type
+require(igraph)
+
+# Set the graph and type
+# graphNetwork <- graph.data.frame(resultGraph, directed = F)
+print(edgelist[sample(nrow(edgelist), 6), ])
+# Assign colors to edges and nodes (searchterm blue, rest orange)
+V(graphNetwork)$color <- ifelse(V(graphNetwork)$type == 'Rockland', 'cornflowerblue', 'orange')
+
+# Edges with a significance of at least 50% of the maximum sig- nificance in the graph are drawn in orange
+halfMaxSig <- max(E(graphNetwork)$cases) * .5
+E(graphNetwork)$color <- ifelse(E(graphNetwork)$cases > halfMaxSig, "coral", "azure3")
+
+# Disable edges with radius
+E(graphNetwork)$curved <- 0
+# Size the nodes by their degree of networking
+V(graphNetwork)$size <- log(degree(graphNetwork)) * 5
+
+# All nodes must be assigned a standard minimum-size
+V(graphNetwork)$size[V(graphNetwork)$size < 5] <- 3
+
+# edge thickness
+E(graphNetwork)$width <- 2
+
+# Define the frame and spacing for the plot
+par(mai=c(0,0,1,1))
+
+# Finaler Plot
+plot(graphNetwork,
+     layout = layout.fruchterman.reingold,  # Force Directed Layout
+     main = paste('State-County', ' Graph'),
+     # vertex.label.family = "sans",
+     # vertex.label.cex = 0.8,
+     # vertex.shape = "circle",
+     # vertex.label.dist = 0.5,           # Labels of the nodes moved slightly
+     vertex.frame.color = 'darkolivegreen',
+     vertex.label.color = 'black',      # Color of node names
+     vertex.label.font = 2,         # Font of node names
+     vertex.label = NA,#V(graphNetwork)$name,       # node names
+     # vertex.label.cex = 1 # font size of node names
+)
+
+```
+
+## Merge with gps 
+
+```{python}
+anthem_data = pd.read_csv('./covid-19-data/covid_dashboard_state.csv')
+# latest_data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/04-01-2020.csv')
+latest_data = pd.read_csv('covid-19-data/csse_covid_19_daily_reports_04-01-2020.csv')
+print(latest_data.shape)
+print(latest_data.columns)
+print(anthem_data.columns)
+latest_data = pd.merge(anthem_data, latest_data, \
+        left_on='state_name',right_on='Province_State')
+print(latest_data.shape)
+```

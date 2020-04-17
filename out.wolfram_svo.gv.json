@@ -1,0 +1,470 @@
+{
+  "edges": [
+    {
+      "id": 0,
+      "from_id": 16,
+      "label": "exist",
+      "trg_id": 25,
+      "relxn": "inferred"
+    },
+    {
+      "id": 1,
+      "from_id": 16,
+      "label": "look",
+      "trg_id": 18,
+      "relxn": "inferred"
+    },
+    {
+      "id": 2,
+      "from_id": 16,
+      "label": "represent",
+      "trg_id": 26,
+      "relxn": "inferred"
+    },
+    {
+      "id": 3,
+      "from_id": 10,
+      "label": "is",
+      "trg_id": 6,
+      "relxn": "inferred"
+    },
+    {
+      "id": 4,
+      "from_id": 7,
+      "label": "occur",
+      "trg_id": 15,
+      "relxn": "inferred"
+    },
+    {
+      "id": 5,
+      "from_id": 7,
+      "label": "lay",
+      "trg_id": 11,
+      "relxn": "inferred"
+    },
+    {
+      "id": 6,
+      "from_id": 7,
+      "label": "separate",
+      "trg_id": 2,
+      "relxn": "inferred"
+    },
+    {
+      "id": 7,
+      "from_id": 7,
+      "label": "use",
+      "trg_id": 18,
+      "relxn": "inferred"
+    },
+    {
+      "id": 8,
+      "from_id": 5,
+      "label": "is_like",
+      "trg_id": 14,
+      "relxn": "inferred"
+    },
+    {
+      "id": 9,
+      "from_id": 12,
+      "label": "is",
+      "trg_id": 6,
+      "relxn": "inferred"
+    },
+    {
+      "id": 10,
+      "from_id": 12,
+      "label": "is",
+      "trg_id": 1,
+      "relxn": "inferred"
+    },
+    {
+      "id": 11,
+      "from_id": 12,
+      "label": "let",
+      "trg_id": 18,
+      "relxn": "inferred"
+    },
+    {
+      "id": 12,
+      "from_id": 12,
+      "label": "let",
+      "trg_id": 8,
+      "relxn": "inferred"
+    },
+    {
+      "id": 13,
+      "from_id": 12,
+      "label": "work",
+      "trg_id": 3,
+      "relxn": "inferred"
+    },
+    {
+      "id": 14,
+      "from_id": 12,
+      "label": "kind_of",
+      "trg_id": 20,
+      "relxn": "inferred"
+    },
+    {
+      "id": 15,
+      "from_id": 12,
+      "label": "kind_of",
+      "trg_id": 24,
+      "relxn": "inferred"
+    },
+    {
+      "id": 16,
+      "from_id": 1,
+      "label": "is",
+      "trg_id": 19,
+      "relxn": "inferred"
+    },
+    {
+      "id": 17,
+      "from_id": 1,
+      "label": "is",
+      "trg_id": 21,
+      "relxn": "inferred"
+    },
+    {
+      "id": 18,
+      "from_id": 1,
+      "label": "is",
+      "trg_id": 15,
+      "relxn": "inferred"
+    },
+    {
+      "id": 19,
+      "from_id": 11,
+      "label": "is",
+      "trg_id": 6,
+      "relxn": "inferred"
+    },
+    {
+      "id": 20,
+      "from_id": 11,
+      "label": "define",
+      "trg_id": 22,
+      "relxn": "inferred"
+    },
+    {
+      "id": 21,
+      "from_id": 11,
+      "label": "define",
+      "trg_id": 16,
+      "relxn": "inferred"
+    },
+    {
+      "id": 22,
+      "from_id": 17,
+      "label": "traverse",
+      "trg_id": 11,
+      "relxn": "inferred"
+    },
+    {
+      "id": 23,
+      "from_id": 17,
+      "label": "traverse",
+      "trg_id": 13,
+      "relxn": "inferred"
+    },
+    {
+      "id": 24,
+      "from_id": 17,
+      "label": "kind_of",
+      "trg_id": 3,
+      "relxn": "inferred"
+    },
+    {
+      "id": 25,
+      "from_id": 25,
+      "label": "is_like",
+      "trg_id": 12,
+      "relxn": "inferred"
+    },
+    {
+      "id": 26,
+      "from_id": 18,
+      "label": "start",
+      "trg_id": 22,
+      "relxn": "inferred"
+    },
+    {
+      "id": 27,
+      "from_id": 18,
+      "label": "is",
+      "trg_id": 3,
+      "relxn": "inferred"
+    },
+    {
+      "id": 28,
+      "from_id": 19,
+      "label": "describe",
+      "trg_id": 15,
+      "relxn": "inferred"
+    },
+    {
+      "id": 29,
+      "from_id": 19,
+      "label": "get",
+      "trg_id": 7,
+      "relxn": "inferred"
+    },
+    {
+      "id": 30,
+      "from_id": 19,
+      "label": "freeze",
+      "trg_id": 13,
+      "relxn": "inferred"
+    },
+    {
+      "id": 31,
+      "from_id": 23,
+      "label": "kind_of",
+      "trg_id": 9,
+      "relxn": "inferred"
+    },
+    {
+      "id": 32,
+      "from_id": 23,
+      "label": "kind_of",
+      "trg_id": 0,
+      "relxn": "inferred"
+    },
+    {
+      "id": 33,
+      "from_id": 15,
+      "label": "is",
+      "trg_id": 11,
+      "relxn": "inferred"
+    },
+    {
+      "id": 34,
+      "from_id": 15,
+      "label": "start",
+      "trg_id": 22,
+      "relxn": "inferred"
+    },
+    {
+      "id": 35,
+      "from_id": 15,
+      "label": "use",
+      "trg_id": 18,
+      "relxn": "inferred"
+    },
+    {
+      "id": 36,
+      "from_id": 15,
+      "label": "use",
+      "trg_id": 12,
+      "relxn": "inferred"
+    },
+    {
+      "id": 37,
+      "from_id": 21,
+      "label": "record",
+      "trg_id": 7,
+      "relxn": "inferred"
+    },
+    {
+      "id": 38,
+      "from_id": 4,
+      "label": "is",
+      "trg_id": 12,
+      "relxn": "inferred"
+    },
+    {
+      "id": 39,
+      "from_id": 4,
+      "label": "reflect",
+      "trg_id": 15,
+      "relxn": "inferred"
+    },
+    {
+      "id": 40,
+      "from_id": 4,
+      "label": "reflect",
+      "trg_id": 16,
+      "relxn": "inferred"
+    },
+    {
+      "id": 41,
+      "from_id": 4,
+      "label": "is",
+      "trg_id": 21,
+      "relxn": "inferred"
+    },
+    {
+      "id": 42,
+      "from_id": 3,
+      "label": "express",
+      "trg_id": 10,
+      "relxn": "inferred"
+    },
+    {
+      "id": 43,
+      "from_id": 13,
+      "label": "is",
+      "trg_id": 11,
+      "relxn": "inferred"
+    },
+    {
+      "id": 44,
+      "from_id": 13,
+      "label": "is",
+      "trg_id": 18,
+      "relxn": "inferred"
+    },
+    {
+      "id": 45,
+      "from_id": 13,
+      "label": "is",
+      "trg_id": 12,
+      "relxn": "inferred"
+    },
+    {
+      "id": 46,
+      "from_id": 13,
+      "label": "kind_of",
+      "trg_id": 25,
+      "relxn": "inferred"
+    }
+  ],
+  "nodes": [
+    {
+      "id": 0,
+      "term": "make",
+      "pos": "VB"
+    },
+    {
+      "id": 1,
+      "term": "thing",
+      "pos": "NN"
+    },
+    {
+      "id": 2,
+      "term": "system",
+      "pos": "NN"
+    },
+    {
+      "id": 3,
+      "term": "way",
+      "pos": "NN"
+    },
+    {
+      "id": 4,
+      "term": "something",
+      "pos": "NN"
+    },
+    {
+      "id": 5,
+      "term": "find",
+      "pos": "VB"
+    },
+    {
+      "id": 6,
+      "term": "physics",
+      "pos": "NNS"
+    },
+    {
+      "id": 7,
+      "term": "event",
+      "pos": "NN"
+    },
+    {
+      "id": 8,
+      "term": "look",
+      "pos": "NN"
+    },
+    {
+      "id": 9,
+      "term": "get",
+      "pos": "VB"
+    },
+    {
+      "id": 10,
+      "term": "idea",
+      "pos": "NN"
+    },
+    {
+      "id": 11,
+      "term": "space",
+      "pos": "NN"
+    },
+    {
+      "id": 12,
+      "term": "model",
+      "pos": "NN"
+    },
+    {
+      "id": 13,
+      "term": "time",
+      "pos": "NN"
+    },
+    {
+      "id": 14,
+      "term": "happen",
+      "pos": "VB"
+    },
+    {
+      "id": 15,
+      "term": "universe",
+      "pos": "NN"
+    },
+    {
+      "id": 16,
+      "term": "structure",
+      "pos": "NN"
+    },
+    {
+      "id": 17,
+      "term": "path",
+      "pos": "NN"
+    },
+    {
+      "id": 18,
+      "term": "rule",
+      "pos": "NN"
+    },
+    {
+      "id": 19,
+      "term": "observer",
+      "pos": "NN"
+    },
+    {
+      "id": 20,
+      "term": "theory",
+      "pos": "NN"
+    },
+    {
+      "id": 21,
+      "term": "graph",
+      "pos": "NN"
+    },
+    {
+      "id": 22,
+      "term": "hypergraph",
+      "pos": "NN"
+    },
+    {
+      "id": 23,
+      "term": "let",
+      "pos": "VB"
+    },
+    {
+      "id": 24,
+      "term": "work",
+      "pos": "NN"
+    },
+    {
+      "id": 25,
+      "term": "example",
+      "pos": "NN"
+    },
+    {
+      "id": 26,
+      "term": "language",
+      "pos": "NN"
+    }
+  ]
+}
